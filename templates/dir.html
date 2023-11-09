@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Internship Record (DIR)</title>
+  </head>
+  <body>
+    <div>
+      <img
+        src="data:;base64,{{tse_logo_base64}}"
+        style="position: absolute;"
+        width="200"
+      />
+      <h1 class="center">
+        ใบบันทึกเวลาฝึกงานในวิชาชีพด้านวิศวกรรมซอฟต์แวร์ระยะยาว
+      </h1>
+      <h1 class="center">
+        โครงการ TU-PINE หลักสูตร Soft-en คณะวิศวกรรมศาสตร์ มหาวิทยาลัยธรรมศาสตร์
+      </h1>
+      <p class="center" style="font-weight: 200">
+        (นักศึกษาต้องลงเวลาเข้า-ออก และกรอกรายละเอียดของลักษณะงานที่ทำทุกวัน)
+      </p>
+      <br />
+      <h2 class="left">1. ข้อมูลผู้ฝึกงาน</h2>
+      <table style="width: 40%; text-align: center">
+        <tr>
+          <th>ชื่อ - สกุล</th>
+          <td style="width: 60%">{{ name }}</td>
+        </tr>
+        <tr>
+          <th>เลขทะเบียน</th>
+          <td style="width: 60%">{{ id }}</td>
+        </tr>
+        <tr>
+          <th>ชื่อสถานประกอบการ</th>
+          <td style="width: 60%">{{ company }}</td>
+        </tr>
+      </table>
+      <br />
+      <h2 class="left">2. บันทึกเวลาการฝึกงาน</h2>
+      <table style="width: 100%; text-align: center">
+        <tr>
+          <th>วัน/เดือน/ปี</th>
+          <th>เวลาเข้างาน</th>
+          <th>เวลาออก</th>
+          <th>ลักษณะงานที่ทำทั้งช่วงเช้าและบ่าย (โดยละเอียด)</th>
+          <th>ลงชื่อผู้ควบคุมงาน</th>
+        </tr>
+        {% for record in records %}
+        <tr>
+          <td>meow</td>
+          <td>meow</td>
+          <td>meow</td>
+          <td>meow</td>
+          <td>meow</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <br />
+      <div class="keep-together" style="float: left">
+        <pre>ลงชื่อ ........................................ ผู้ควบคุมการปฏิบัติงาน</pre>
+        <pre>    (........................................)</pre>
+        <pre>     ตำแหน่ง ................................</pre>
+        <pre>     วันที่ ...................................</pre>
+      </div>
+      <div class="keep-together" style="float: right">
+        <pre>สรุปเวลาในการฝึกงาน มา ........... วัน</pre>
+        <pre>                  ลา ........... วัน</pre>
+        <pre>                 สาย ........... วัน</pre>
+        <pre>                 ขาด ........... วัน</pre>
+      </div>
+    </div>
+  </body>
+</html>

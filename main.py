@@ -1,3 +1,6 @@
+import os
+import base64
+
 from fastapi import FastAPI
 from fastapi.responses import Response
 from fastapi.middleware.cors import CORSMiddleware
@@ -28,21 +31,43 @@ def main():
 
 ###########################################################
 
-@app.get('/internlog')
-def get_internlog(id: str = '', date: str = ''):
+@app.get('/dir')
+def get_dir(id: str = '', date: str = ''):
 
     if id == '':
         return {'error': 'id is not specified'}
     if date == '':
         return {'error': 'date is not specified'}
     
-    template_name = 'internlog'
+    # read and convert TSE logo image to base64
+    root = os.path.dirname(os.path.abspath(__file__))
+    tse_logo_path = os.path.join(root, 'static', 'tse_logo.png')
+    with open(tse_logo_path, 'rb') as img:
+        tse_logo_base64 = base64.b64encode(img.read()).decode()
+    
+    template_name = 'dir'
+
     contexts = {
         'id': id, 
-        'date': date
+        'date': date,
+        'tse_logo_base64': tse_logo_base64,
+        'name': 'Hatsune Miku',
+        'company': 'Neki Company',
+        'records': [{} for _ in range(7)],
     }
 
-    err, pdf = html2pdf(template_name, contexts)
+    # https://wkhtmltopdf.org/usage/wkhtmltopdf.txt
+    options = {
+        'page-size': 'A4',
+        'orientation':'Landscape',
+        'header-html': 'templates/dir_header.html',
+        'header-spacing': '10',
+        'margin-top': '20',
+        'margin-bottom': '20',
+        'encoding': 'UTF-8',
+    }
+
+    err, pdf = html2pdf(template_name, contexts, options)
 
     if err:
         return err

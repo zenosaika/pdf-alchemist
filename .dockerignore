@@ -1,0 +1,7 @@
+# flyctl launch added from .gitignore
+**/.DS_Store
+
+# flyctl launch added from venv/.gitignore
+# created by virtualenv automatically
+venv/**/*
+fly.toml
